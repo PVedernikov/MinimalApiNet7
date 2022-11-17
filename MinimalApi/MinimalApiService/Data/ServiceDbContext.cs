@@ -5,11 +5,17 @@ namespace MinimalApiService.Data
 {
     public class ServiceDbContext : DbContext
     {
-        public ServiceDbContext() { }
+        public ServiceDbContext() 
+        {
+            Database.EnsureCreated();
+        }
 
-        public ServiceDbContext(DbContextOptions<ServiceDbContext> options) : base(options) { }
+        public ServiceDbContext(DbContextOptions<ServiceDbContext> options) : base(options) 
+        {
+            Database.EnsureCreated();
+        }
 
-        DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
